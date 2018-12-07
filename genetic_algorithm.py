@@ -9,12 +9,14 @@ from wusn.commons import WusnOutput, WusnInput
 
 
 population = []
+individual_number = 0
 gens = []
 matrix = []
 anchors = []
 exact_non_anchors = []
-generation = 100
+generation = 10
 selection_size = 0
+result = []
 
 def init_population(number):
     for i in range(number):
@@ -24,22 +26,26 @@ def init_population(number):
             chromosome.append([x, y])
         population.append(Individual(chromosome))
 
+
 def fitness(individual):
     res = 0
     non_anchors = []
     M = len(anchors)
-    for i in range(len(individual)):
-        indi = individual[i]
+    chromosome = individual.chromosome
+    for i in range(len(chromosome)):
+        indi = chromosome[i]
         non_anchors.append(NonAnchor(x=indi[0], y=indi[1], r=exact_non_anchors[i].r, order=M+i))
     for k in anchors + non_anchors:
-        k.non_anchors_neighborhood(non_anchors)
+        k.non_anchors_neighborhood(exact_non_anchors)
+        # print('neibor', k.non_anchors_neibor)
         for non_an in k.non_anchors_neibor:
             d_1 = matrix[k.order][non_an.order]
-            if(d_1 == -1.):
-                print("fuck fuck fuck")
+            # if(d_1 != -1.):
+            #     print("fuck fuck fuck")
             d_2 = cm.Euclide_distance(k.x, k.y, non_an.x, non_an.y)
             square = (d_1 - d_2)**2
             res += square
+    return res
 
 def tournament_selection():
     individual_number = len(population)
@@ -62,48 +68,61 @@ def crossover(individual_1, individual_2):
     child_2 = chromosome_2[0:cut_point+1] + chromosome_1[cut_point+1:N]
     return Individual(child_1), Individual(child_2)
 
-
+def to_file(path):
+    with open(path, 'wt') as f:
+        f.write('%d\n' % len(exact_non_anchors))
+        for s in result.chromosome:
+            f.write('%f %f\n' % (s[0], s[1]))
 
 
 if __name__ == '__main__':
-    path_1 = ''
-    path_2 = ''
+    path_1 = 'gens.test'
+    path_2 = 'matrix.test'
     path_3 = ''
-    print('Enter a path to an input/output file to gens.')
-    input(path_1)
-    print('Enter a path to an input/output file to matrix.')
-    input(path_2)
+    # print('Enter a path to an input/output file to gens.')
+    # path_1 = input()
+    # print('Enter a path to an input/output file to matrix.')
+    # path_2 = input()
     print('Enter a path to an input/output file to data.')
-    input(path_3)
+    path_3 = input()
+    print(path_1)
+    print(path_2)
+    print(path_3)
 
     try:
-        while True:
-            print(path_1)
-            print(path_2)
-            print(path_3)
-            if not os.path.exists(path_1) or not os.path.exists(path_2) or not os.path.exists(path_3):
-                print('No such path exists.')
-                continue
-            try:
-                gens = ToA.from_file_gens(path_1)
-                matrix = ToA.from_file_matrix(path_2)
-                obj = WusnInput.from_file(path_3, True)
-            except Exception:
-                print('Failed')
-                continue
 
-            anchors = obj.anchors
-            exact_non_anchors = obj.non_anchors
-            init_population(100)
-            selection_size = int(math.sqrt(len(population)))
-            for _ in range(generation):
-                candidates = []
-                while len(candidates) < selection_size:
-                    candidate = tournament_selection()
-                    candidates.append(candidate)
-                
+        if not os.path.exists(path_1) or not os.path.exists(path_2) or not os.path.exists(path_3):
+            print('No such path exists.')
+        try:
+            gens = ToA.from_file_gens(path=path_1)
+            matrix = ToA.from_file_matrix(path=path_2)
+            obj = WusnInput.from_file(path_3, True)
+        except Exception:
+            print('Failed')
 
-
+        anchors = obj.anchors
+        exact_non_anchors = obj.non_anchors
+        init_population(16)
+        individual_number = len(population)
+        population.sort(key=fitness)
+        selection_size = int(math.sqrt(len(population)))
+        for t in range(generation):
+            print(t)
+            candidates = []
+            while len(candidates) < selection_size:
+                candidate = tournament_selection()
+                candidates.append(candidate)
+            for i in range(selection_size-1):
+                for j in range(i+1, selection_size):
+                    ch_1, ch_2 = crossover(candidates[i], candidates[j])
+                    population.append(ch_1)
+                    population.append(ch_2)
+            population.sort(key=fitness)
+            population = population[0:individual_number]
+        population.sort(key=fitness)
+        result = population[0]
+        to_file('result.test')
+        print('res', result.chromosome)
 
     except (KeyboardInterrupt, EOFError):
         print()

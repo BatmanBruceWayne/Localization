@@ -187,7 +187,9 @@ class ToA:
             for row in self.matrix:
                 for column in row:
                     f.write('%f ' % (column))
+                f.write('\n')
 
+    @classmethod
     def from_file_gens(cls, path):
         with open(path, 'rt') as f:
             lines = f.readlines()
@@ -196,9 +198,10 @@ class ToA:
             gens = []
             for ln in lines[1:1+number]:
                 type, x_1, y_1, x_2, y_2 = ln.split(' ')
-                gens.append(Gen(float(x_1), float(y_1), float(x_2), float(y_2), 100., type))
+                gens.append(Gen(float(x_1), float(y_1), float(x_2), float(y_2), type))
             return gens
 
+    @classmethod
     def from_file_matrix(cls, path):
         with open(path, 'rt') as f:
             lines = f.readlines()
