@@ -83,9 +83,10 @@ def mutate(individual):
 def to_file(path):
     with open(path, 'wt') as f:
         f.write('%d\n' % len(exact_non_anchors))
+        i = len(anchors)
         for s in result.chromosome:
-            f.write('%f %f\n' % (s[0], s[1]))
-
+            f.write('%d %f %f\n' % (i, s[0], s[1]))
+            i+=1
 
 if __name__ == '__main__':
     path_1 = 'gens.test'

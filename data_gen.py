@@ -41,10 +41,10 @@ def uniform_non_anchors(width, height, N, M):
     non_anchors = []
     for i in range(N):
         x, y = uniform_point(width, height)
-        rn = Point(x=x, y=y, order=i+M)
+        rn = Point(x=x, y=y, r=100., order=i+M)
         while rn in non_anchors:
             x, y = uniform_point(width, height)
-            rn = Point(x=x, y=y, order=i+M)
+            rn = Point(x=x, y=y, r=100., order=i+M)
         non_anchors.append(rn)
     return non_anchors
 
