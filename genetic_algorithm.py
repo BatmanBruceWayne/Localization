@@ -6,7 +6,7 @@ from simulated_ToA import ToA
 import common as cm
 import random
 from wusn.commons import  WusnInput
-
+import numpy as np
 
 population = []
 individual_number = 0
@@ -14,7 +14,7 @@ gens = []
 matrix = []
 anchors = []
 exact_non_anchors = []
-generation = 10
+generation = 100
 selection_size = 0
 result = []
 
@@ -68,6 +68,18 @@ def crossover(individual_1, individual_2):
     child_2 = chromosome_2[0:cut_point+1] + chromosome_1[cut_point+1:N]
     return Individual(child_1), Individual(child_2)
 
+def mutate(individual):
+    chromosome = individual.chromosome
+    mean = 0.
+    deviation = 1.
+    child = []
+    for c in chromosome:
+        a = np.random.normal(mean, deviation)
+        b = np.random.normal(mean, deviation)
+        m, n = a + c[0], b + c[1]
+        child.append([m, n])
+    return Individual(child)
+
 def to_file(path):
     with open(path, 'wt') as f:
         f.write('%d\n' % len(exact_non_anchors))
@@ -102,7 +114,7 @@ if __name__ == '__main__':
 
         anchors = obj.anchors
         exact_non_anchors = obj.non_anchors
-        init_population(16)
+        init_population(80)
         individual_number = len(population)
         population.sort(key=fitness)
         selection_size = int(math.sqrt(len(population)))
@@ -117,6 +129,9 @@ if __name__ == '__main__':
                     ch_1, ch_2 = crossover(candidates[i], candidates[j])
                     population.append(ch_1)
                     population.append(ch_2)
+            for can in candidates:
+                ch = mutate(can)
+                population.append(ch)
             population.sort(key=fitness)
             population = population[0:individual_number]
         population.sort(key=fitness)
