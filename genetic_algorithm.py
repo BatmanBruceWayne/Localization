@@ -5,7 +5,7 @@ import math
 from simulated_ToA import ToA
 import common as cm
 import random
-from wusn.commons import WusnOutput, WusnInput
+from wusn.commons import  WusnInput
 
 
 population = []
