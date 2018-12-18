@@ -8,6 +8,7 @@ from prompt_toolkit.history import InMemoryHistory
 from wusn.commons import WusnOutput, WusnInput, Gen, NonAnchor
 import common as cm
 
+
 class ToA:
     def __init__(self, error=1., max_width=1500., max_height=1000.):
         self.error = error
@@ -17,29 +18,29 @@ class ToA:
         self.gens = []
 
     def ToA_distance(self, A, B):
-        d = math.sqrt((A.x-B.x)**2 + (A.y-B.y)**2)
+        d = math.sqrt((A.x - B.x) ** 2 + (A.y - B.y) ** 2)
         return (d + random.uniform(-self.error, self.error))
 
     def distance_matrix(self, anchors, non_anchors):
         m = len(anchors)
         n = len(non_anchors)
-        for i in range(m+n):
+        for i in range(m + n):
             row = []
-            for j in range(n+m):
+            for j in range(n + m):
                 row.append(-1.)
             self.matrix.append(row)
         for i in range(n):
             s = non_anchors[i]
-            for j in range(i+1, n):
+            for j in range(i + 1, n):
                 p = non_anchors[j]
                 if s.distance(p) < s.r or p.distance(s) < p.r:
-                    self.matrix[m+i][m+j] = self.ToA_distance(s, p)
-                    self.matrix[m+j][m+i] = self.matrix[m+i][m+j]
+                    self.matrix[m + i][m + j] = self.ToA_distance(s, p)
+                    self.matrix[m + j][m + i] = self.matrix[m + i][m + j]
             for j in range(m):
                 p = anchors[j]
                 if s.distance(p) < s.r or p.distance(s) < p.r:
-                    self.matrix[m+i][j] = self.ToA_distance(s, p)
-                    self.matrix[j][m+i] = self.matrix[m+i][j]
+                    self.matrix[m + i][j] = self.ToA_distance(s, p)
+                    self.matrix[j][m + i] = self.matrix[m + i][j]
 
     def uniform_point(self, gen):
         if gen.type == 'segment':
@@ -50,7 +51,7 @@ class ToA:
             y = a * x + b
             return x, y
         elif gen.type == 'circle':
-            y = random.uniform(gen.y_1-gen.x_2, gen.y_1+gen.x_2)
+            y = random.uniform(gen.y_1 - gen.x_2, gen.y_1 + gen.x_2)
             X = cm.line_circle_equation(0., y, gen.x_1, gen.y_1, gen.x_2)
             x = X[0]
             return x, y
@@ -58,20 +59,22 @@ class ToA:
             return random.uniform(0., self.max_width), random.uniform(0., self.max_height)
 
     def simulated_location(self, target, be):
-        if(len(be)==3):
-            D = [self.matrix[be[0].order][target.order], self.matrix[be[1].order][target.order], self.matrix[be[2].order][target.order]]
+        if (len(be) == 3):
+            D = [self.matrix[be[0].order][target.order], self.matrix[be[1].order][target.order],
+                 self.matrix[be[2].order][target.order]]
             for index in range(3):
                 pre = index
-                next = (index+1)%3
-                tmp = (index+2)%3
+                next = (index + 1) % 3
+                tmp = (index + 2) % 3
                 A, B = cm.find_radical_axis(be[pre].x, be[pre].y, D[pre], be[next].x, be[next].y, D[next])
                 quadratic = cm.line_circle_equation(A, B, be[pre].x, be[pre].y, D[pre])
                 if quadratic != "No solution!":
                     x_0, x_1 = quadratic[0], quadratic[1]
-                    y_0 = A*x_0 + B
-                    y_1 = A*x_1 + B
+                    y_0 = A * x_0 + B
+                    y_1 = A * x_1 + B
                     x_3, y_3 = x_0, y_0
-                    if cm.Euclide_distance(x_0, y_0, be[tmp].x, be[tmp].y) > cm.Euclide_distance(x_1, y_1, be[tmp].x, be[tmp].y):
+                    if cm.Euclide_distance(x_0, y_0, be[tmp].x, be[tmp].y) > cm.Euclide_distance(x_1, y_1, be[tmp].x,
+                                                                                                 be[tmp].y):
                         x_3, y_3 = x_1, y_1
                     x_near, y_near = cm.find_near_point(x_3, y_3, be[tmp].x, be[tmp].y, D[tmp])
                     return Gen(x_3, y_3, x_near, y_near, 'segment')
@@ -87,8 +90,8 @@ class ToA:
             if quadratic != "No solution!":
                 x_0 = quadratic[0]
                 x_1 = quadratic[1]
-                y_0 = a*x_0 + b
-                y_1 = a*x_1 + b
+                y_0 = a * x_0 + b
+                y_1 = a * x_1 + b
                 return Gen(x_0, y_0, x_1, y_1, 'segment')
             near_x_0, near_y_0 = cm.find_near_point(be[0].x, be[0].y, be[1].x, be[1].y, D[1])
             near_x_1, near_y_1 = cm.find_near_point(be[1].x, be[1].y, be[0].x, be[0].y, D[0])
@@ -100,7 +103,7 @@ class ToA:
             return Gen(type='plane')
 
     def run_ToA(self, anchors, non_anchors):
-        self.gens = [0]*len(non_anchors)
+        self.gens = [0] * len(non_anchors)
         C = []
         self.distance_matrix(anchors, non_anchors)
 
@@ -122,7 +125,7 @@ class ToA:
                             break
                 if len(beacons) == 3:
                     gen = self.simulated_location(s, beacons)
-                    self.gens[s.order-len(anchors)] = gen
+                    self.gens[s.order - len(anchors)] = gen
                     simulated_s = self.uniform_point(gen)
                     C.append(NonAnchor(x=simulated_s[0], y=simulated_s[1], r=50., order=s.order))
                     non_anchors.remove(s)
@@ -145,7 +148,7 @@ class ToA:
                             break
                 if len(beacons) == 2:
                     gen = self.simulated_location(s, beacons)
-                    self.gens[s.order-len(anchors)] = gen
+                    self.gens[s.order - len(anchors)] = gen
                     simulated_s = self.uniform_point(gen)
                     C.append(NonAnchor(x=simulated_s[0], y=simulated_s[1], r=50., order=s.order))
                     non_anchors.remove(s)
@@ -168,7 +171,7 @@ class ToA:
                             break
                 if len(beacons) == 1:
                     gen = self.simulated_location(s, beacons)
-                    self.gens[s.order-len(anchors)] = gen
+                    self.gens[s.order - len(anchors)] = gen
                     simulated_s = self.uniform_point(gen)
                     C.append(NonAnchor(x=simulated_s[0], y=simulated_s[1], r=50., order=s.order))
                     non_anchors.remove(s)
@@ -196,7 +199,7 @@ class ToA:
             lines = list(map(lambda l: l.strip(), lines))
             number = int(lines[0])
             gens = []
-            for ln in lines[1:1+number]:
+            for ln in lines[1:1 + number]:
                 type, x_1, y_1, x_2, y_2 = ln.split(' ')
                 gens.append(Gen(float(x_1), float(y_1), float(x_2), float(y_2), type))
             return gens
@@ -212,6 +215,7 @@ class ToA:
                 R = [float(c) for c in row]
                 matrix.append(R)
             return matrix
+
 
 if __name__ == '__main__':
     history = InMemoryHistory()

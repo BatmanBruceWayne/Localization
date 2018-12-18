@@ -5,7 +5,7 @@ import math
 from simulated_ToA import ToA
 import common as cm
 import random
-from wusn.commons import  WusnInput
+from wusn.commons import WusnInput
 import numpy as np
 
 population = []
@@ -17,6 +17,7 @@ exact_non_anchors = []
 generation = 100
 selection_size = 0
 result = []
+
 
 def init_population(number):
     for i in range(number):
@@ -34,7 +35,7 @@ def fitness(individual):
     chromosome = individual.chromosome
     for i in range(len(chromosome)):
         indi = chromosome[i]
-        non_anchors.append(NonAnchor(x=indi[0], y=indi[1], r=exact_non_anchors[i].r, order=M+i))
+        non_anchors.append(NonAnchor(x=indi[0], y=indi[1], r=exact_non_anchors[i].r, order=M + i))
     for k in anchors + non_anchors:
         k.non_anchors_neighborhood(exact_non_anchors)
         # print('neibor', k.non_anchors_neibor)
@@ -43,14 +44,15 @@ def fitness(individual):
             # if(d_1 != -1.):
             #     print("fuck fuck fuck")
             d_2 = cm.Euclide_distance(k.x, k.y, non_an.x, non_an.y)
-            square = (d_1 - d_2)**2
+            square = (d_1 - d_2) ** 2
             res += square
     return res
 
+
 def tournament_selection():
     individual_number = len(population)
-    first = random.randint(0, individual_number-1)
-    second = random.randint(0, individual_number-1)
+    first = random.randint(0, individual_number - 1)
+    second = random.randint(0, individual_number - 1)
     while second == first:
         second = random.randint(0, individual_number - 1)
     fit_1 = fitness(population[first])
@@ -59,14 +61,21 @@ def tournament_selection():
         return population[first]
     return population[second]
 
+
 def crossover(individual_1, individual_2):
     chromosome_1 = individual_1.chromosome
     chromosome_2 = individual_2.chromosome
+    a = random.uniform(0, 1)
     N = len(chromosome_1)
-    cut_point = random.randint(0, N-2)
-    child_1 = chromosome_1[0:cut_point+1] + chromosome_2[cut_point+1:N]
-    child_2 = chromosome_2[0:cut_point+1] + chromosome_1[cut_point+1:N]
+    child_1 = N * [0, 0]
+    child_2 = N * [0, 0]
+    for i in range(N):
+        child_1[i][0] = chromosome_1[i][0] * a + (1 - a) * chromosome_2[i][0]
+        child_1[i][1] = chromosome_1[i][1] * a + (1 - a) * chromosome_2[i][1]
+        child_2[i][0] = chromosome_1[i][0] * (1 - a) + a * chromosome_2[i][0]
+        child_2[i][1] = chromosome_1[i][1] * (1 - a) + a * chromosome_2[i][1]
     return Individual(child_1), Individual(child_2)
+
 
 def mutate(individual):
     chromosome = individual.chromosome
@@ -80,13 +89,15 @@ def mutate(individual):
         child.append([m, n])
     return Individual(child)
 
+
 def to_file(path):
     with open(path, 'wt') as f:
         f.write('%d\n' % len(exact_non_anchors))
         i = len(anchors)
         for s in result.chromosome:
             f.write('%d %f %f\n' % (i, s[0], s[1]))
-            i+=1
+            i += 1
+
 
 if __name__ == '__main__':
     path_1 = 'gens.test'
@@ -118,19 +129,24 @@ if __name__ == '__main__':
         init_population(80)
         individual_number = len(population)
         population.sort(key=fitness)
-        selection_size = int(math.sqrt(len(population)))
+        crossover_selection_size = int(len(population) * 4 / 5)
+        mutation_selection_size = int(len(population) / 2)
         for t in range(generation):
             print(t)
-            candidates = []
-            while len(candidates) < selection_size:
+            crossover_candidates = []
+            mutation_candidates = []
+            while len(crossover_candidates) < crossover_selection_size:
                 candidate = tournament_selection()
-                candidates.append(candidate)
-            for i in range(selection_size-1):
-                for j in range(i+1, selection_size):
-                    ch_1, ch_2 = crossover(candidates[i], candidates[j])
+                crossover_candidates.append(candidate)
+            while len(mutation_candidates) < mutation_selection_size:
+                candidate = tournament_selection()
+                mutation_candidates.append(candidate)
+            for i in range(selection_size - 1):
+                for j in range(i + 1, selection_size):
+                    ch_1, ch_2 = crossover(crossover_candidates[i], crossover_candidates[j])
                     population.append(ch_1)
                     population.append(ch_2)
-            for can in candidates:
+            for can in mutation_candidates:
                 ch = mutate(can)
                 population.append(ch)
             population.sort(key=fitness)

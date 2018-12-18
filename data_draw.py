@@ -5,7 +5,6 @@ from prompt_toolkit.history import InMemoryHistory
 
 from wusn.commons import WusnOutput, WusnInput
 
-
 if __name__ == '__main__':
     history = InMemoryHistory()
     plt.ioff()

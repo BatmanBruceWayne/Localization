@@ -37,22 +37,23 @@ def uniform_anchors(width, height, M):
         anchors.append(sn)
     return anchors
 
+
 def uniform_non_anchors(width, height, N, M):
     non_anchors = []
     for i in range(N):
         x, y = uniform_point(width, height)
-        rn = Point(x=x, y=y, r=100., order=i+M)
+        rn = Point(x=x, y=y, r=100., order=i + M)
         while rn in non_anchors:
             x, y = uniform_point(width, height)
-            rn = Point(x=x, y=y, r=100., order=i+M)
+            rn = Point(x=x, y=y, r=100., order=i + M)
         non_anchors.append(rn)
     return non_anchors
+
 
 GENS = {
     'rr': (uniform_anchors, uniform_non_anchors),
     # 'rhr': (uniform_sensors, uniform_half_relays),
 }
-
 
 if __name__ == '__main__':
     args = parse_arguments()
@@ -61,7 +62,8 @@ if __name__ == '__main__':
         for i in range(args.count):
             anchors_ = fn_s(args.width, args.height, args.anchors)
             non_anchors_ = fn_r(args.width, args.height, args.non_anchors, args.anchors)
-            inp = WusnInput(anchors=anchors_, non_anchors=non_anchors_, width=args.width, height=args.height, ignore_cache=True)
+            inp = WusnInput(anchors=anchors_, non_anchors=non_anchors_, width=args.width, height=args.height,
+                            ignore_cache=True)
 
             fname = '%s-%03d.test' % (name, i + 1)
             path = os.path.join(args.output_dir, fname)
