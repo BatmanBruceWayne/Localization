@@ -8,7 +8,7 @@ class Point:
     An immutable 2D point.
     """
 
-    def __init__(self, x=0., y=0., r=20., order=-1):
+    def __init__(self, x=0., y=0., r=30., order=-1):
         self.x = x
         self.y = y
         self.r = r
@@ -22,12 +22,12 @@ class Point:
 
 
 class Anchor(Point):
-    def __init__(self, x=0., y=0., r=20., order=-1):
+    def __init__(self, x=0., y=0., r=30., order=-1):
         super().__init__(x, y, r, order)
 
 
 class NonAnchor(Point):
-    def __init__(self, x=0., y=0., r=20., order=-1):
+    def __init__(self, x=0., y=0., r=30., order=-1):
         super().__init__(x, y, r, order)
 
 
@@ -43,9 +43,10 @@ class Gen:
         if self.type == 'segment':
             x_max = max(self.x_1, self.x_2)
             x_min = min(self.x_1, self.x_2)
+            y_max = max(self.y_1, self.y_2)
+            y_min = min(self.y_1, self.y_2)
             x = random.uniform(x_min, x_max)
-            a, b = cm.defineLine(self.x_1, self.y_1, self.x_2, self.y_2)
-            y = a * x + b
+            y = random.uniform(y_min, y_max)
             return x, y
         elif self.type == 'circle':
             y = random.uniform(self.y_1 - self.x_2, self.y_1 + self.x_2)
