@@ -16,7 +16,7 @@ exact_non_anchors = []
 generation = 100
 selection_size = 0
 result = []
-
+candi_pop = []
 
 def init_population(number):
     for i in range(number):
@@ -49,16 +49,32 @@ def fitness(individual):
 
 
 def tournament_selection():
-    individual_number = len(population)
-    first = random.randint(0, individual_number - 1)
-    second = random.randint(0, individual_number - 1)
+    candi_number = len(candi_pop)
+    first = random.randint(0, candi_number - 1)
+    second = random.randint(0, candi_number - 1)
     while second == first:
-        second = random.randint(0, individual_number - 1)
-    fit_1 = fitness(population[first])
-    fit_2 = fitness(population[second])
+        second = random.randint(0, candi_number - 1)
+    fit_1 = fitness(candi_pop[first])
+    fit_2 = fitness(candi_pop[second])
     if fit_1 < fit_2:
-        return population[first]
-    return population[second]
+        res = candi_pop.pop(first)
+    else:
+        res = candi_pop.pop(second)
+    return res
+
+# def tournament_selection():
+#     individual_number = len(population)
+#     first = random.randint(0, individual_number - 1)
+#     second = random.randint(0, individual_number - 1)
+#     while second == first:
+#         second = random.randint(0, individual_number - 1)
+#     fit_1 = fitness(population[first])
+#     fit_2 = fitness(population[second])
+#     if fit_1 < fit_2:
+#         res = population[first]
+#     else:
+#         res = population[second]
+#     return res
 
 
 def crossover(individual_1, individual_2):
@@ -129,11 +145,14 @@ if __name__ == '__main__':
         mutation_selection_size = int(len(population) / 2)
         for t in range(generation):
             print(t)
+            candi_pop = population.copy()
             crossover_candidates = []
             mutation_candidates = []
             while len(crossover_candidates) < crossover_selection_size:
                 candidate = tournament_selection()
                 crossover_candidates.append(candidate)
+
+            candi_pop = population.copy()
             while len(mutation_candidates) < mutation_selection_size:
                 candidate = tournament_selection()
                 mutation_candidates.append(candidate)

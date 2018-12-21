@@ -1,11 +1,9 @@
-from wusn.commons import Individual, NonAnchor
 import os
 from wusn.commons.point import Point
 
-from simulated_ToA import ToA
-import common as cm
 from wusn.commons import WusnInput
 import math
+
 
 def from_file_result(path):
     with open(path, 'rt') as f:
@@ -13,10 +11,16 @@ def from_file_result(path):
         lines = f.readlines()
         lines = list(map(lambda l: l.strip(), lines))
         n = int(lines[0].split(' ')[0])
-        for ln in lines[1:1+n]:
+        for ln in lines[1:1 + n]:
             order, x, y = ln.split(' ')
-            non_anchors_result.append(Point(float(x), float(y), 30., int(order)))
+            non_anchors_result.append(Point(float(x), float(y), 100., int(order)))
         return non_anchors_result
+
+
+def to_file(path, avg):
+    with open(path, 'wt') as f:
+        f.write('%f\n' % avg)
+
 
 if __name__ == '__main__':
     path_1 = 'result.test'
@@ -44,9 +48,10 @@ if __name__ == '__main__':
         for i in range(n):
             p_1 = non_anchors[i]
             p_2 = non_anchors_result[i]
-            avg_error += math.sqrt((p_1.x-p_2.x)**2 + (p_1.y - p_2.y)**2)
+            avg_error += math.sqrt((p_1.x - p_2.x) ** 2 + (p_1.y - p_2.y) ** 2)
         avg_error /= n
         print(avg_error)
+        to_file('evaluation.test', avg_error)
 
     except (KeyboardInterrupt, EOFError):
         print()

@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1439611d-cce8-4dde-b68c-eb82a84dd2c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/evaluation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_gen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/genetic_algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/genetic_algorithm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wusn/commons/input.py" beforeDir="false" afterPath="$PROJECT_DIR$/wusn/commons/input.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gens.test" beforeDir="false" afterPath="$PROJECT_DIR$/gens.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix.test" beforeDir="false" afterPath="$PROJECT_DIR$/matrix.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/result.test" beforeDir="false" afterPath="$PROJECT_DIR$/result.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulated_ToA.py" beforeDir="false" afterPath="$PROJECT_DIR$/simulated_ToA.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/data/rr-001.test" beforeDir="false" afterPath="$PROJECT_DIR$/venv/data/rr-001.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/data/rr-002.test" beforeDir="false" afterPath="$PROJECT_DIR$/venv/data/rr-002.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/data/rr-003.test" beforeDir="false" afterPath="$PROJECT_DIR$/venv/data/rr-003.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/data/rr-004.test" beforeDir="false" afterPath="$PROJECT_DIR$/venv/data/rr-004.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/data/rr-005.test" beforeDir="false" afterPath="$PROJECT_DIR$/venv/data/rr-005.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wusn/commons/point.py" beforeDir="false" afterPath="$PROJECT_DIR$/wusn/commons/point.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/genetic_algorithm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="1695">
+              <caret line="113" column="18" lean-forward="true" selection-start-line="113" selection-start-column="18" selection-end-line="113" selection-end-column="18" />
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
               </folding>
@@ -27,24 +38,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simulated_ToA.py">
+        <entry file="file://$PROJECT_DIR$/gens.test">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1140">
+              <caret line="76" column="36" selection-start-line="76" selection-start-column="36" selection-end-line="76" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/evaluation.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_gen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="555">
+              <caret line="37" column="18" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
               <folding>
-                <element signature="e#0#46#0" expanded="true" />
+                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_draw.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+            <state relative-caret-position="386">
+              <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -63,10 +71,43 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wusn/commons/input.py">
+        <entry file="file://$PROJECT_DIR$/result.test">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="381">
+              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/evaluation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="53" column="44" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/simulated_ToA.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1020">
+              <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/data/rr-001.test">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="8" column="22" lean-forward="true" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+              <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -92,7 +133,6 @@
       <find>Point</find>
       <find>simulated_location</find>
       <find>circle</find>
-      <find>plane</find>
       <find>self.</find>
       <find>Point(</find>
       <find>matrix</find>
@@ -104,7 +144,12 @@
       <find>print(</find>
       <find>uniform</find>
       <find>segment</find>
+      <find>3</find>
       <find>math</find>
+      <find>30</find>
+      <find>plane</find>
+      <find>100</find>
+      <find>individual_number</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -121,12 +166,12 @@
         <option value="$PROJECT_DIR$/venv/wusn/commons/__init__.py" />
         <option value="$PROJECT_DIR$/venv/wusn/__init__.py" />
         <option value="$PROJECT_DIR$/wusn/commons/output.py" />
-        <option value="$PROJECT_DIR$/simulated_ToA.py" />
-        <option value="$PROJECT_DIR$/data_gen.py" />
         <option value="$PROJECT_DIR$/data_draw.py" />
         <option value="$PROJECT_DIR$/common.py" />
-        <option value="$PROJECT_DIR$/wusn/commons/point.py" />
         <option value="$PROJECT_DIR$/wusn/commons/input.py" />
+        <option value="$PROJECT_DIR$/wusn/commons/point.py" />
+        <option value="$PROJECT_DIR$/simulated_ToA.py" />
+        <option value="$PROJECT_DIR$/data_gen.py" />
         <option value="$PROJECT_DIR$/genetic_algorithm.py" />
         <option value="$PROJECT_DIR$/evaluation.py" />
       </list>
@@ -144,7 +189,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -182,10 +226,11 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TestMatplotlib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -321,8 +366,8 @@
       <list>
         <item itemvalue="Python.evaluation" />
         <item itemvalue="Python.genetic_algorithm" />
-        <item itemvalue="Python.simulated_ToA" />
         <item itemvalue="Python.data_draw" />
+        <item itemvalue="Python.simulated_ToA" />
         <item itemvalue="Python.data_gen" />
       </list>
     </recent_temporary>
@@ -343,12 +388,12 @@
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12989046" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1517997" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29612404" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.26976743" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39876354" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -503,20 +548,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/matrix.test">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/common.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gens.test">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="70" column="45" lean-forward="true" selection-start-line="70" selection-start-column="45" selection-end-line="70" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -542,61 +577,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_draw.py">
+    <entry file="file://$PROJECT_DIR$/wusn/commons/input.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/result.test">
+    <entry file="file://$PROJECT_DIR$/matrix.test">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="68" column="24" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
-        </state>
+        <state relative-caret-position="-540" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/data/rr-001.test">
+    <entry file="file://$PROJECT_DIR$/gens.test">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        <state relative-caret-position="1140">
+          <caret line="76" column="36" selection-start-line="76" selection-start-column="36" selection-end-line="76" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data_gen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="555">
+          <caret line="37" column="18" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wusn/commons/input.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="22" lean-forward="true" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/simulated_ToA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+        <state relative-caret-position="1020">
+          <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/data/rr-001.test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/result.test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_draw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/genetic_algorithm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="1695">
+          <caret line="113" column="18" lean-forward="true" selection-start-line="113" selection-start-column="18" selection-end-line="113" selection-end-column="18" />
           <folding>
             <element signature="e#0#46#0" expanded="true" />
           </folding>
@@ -605,10 +652,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/evaluation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+        <state relative-caret-position="281">
+          <caret line="53" column="44" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
           <folding>
-            <element signature="e#0#46#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>

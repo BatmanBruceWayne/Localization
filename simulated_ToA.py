@@ -47,8 +47,9 @@ class ToA:
             x_max = max(gen.x_1, gen.x_2)
             x_min = min(gen.x_1, gen.x_2)
             x = random.uniform(x_min, x_max)
-            a, b = cm.defineLine(gen.x_1, gen.y_1, gen.x_2, gen.y_2)
-            y = a * x + b
+            y_max = max(gen.y_1, gen.y_2)
+            y_min = min(gen.y_1, gen.y_2)
+            y = random.uniform(y_min, y_max)
             return x, y
         elif gen.type == 'circle':
             y = random.uniform(gen.y_1 - gen.x_2, gen.y_1 + gen.x_2)
