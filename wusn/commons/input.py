@@ -107,15 +107,15 @@ class WusnInput:
             width = float(lines[0].split(' ')[0])
             height = float(lines[0].split(' ')[1])
             # N M Y
-            n = int(lines[1].split(' ')[0])
-            m = int(lines[1].split(' ')[1])
+            m = int(lines[1].split(' ')[0])
+            n = int(lines[1].split(' ')[1])
             anchors_ = []
-            for ln in lines[2:2+n]:
+            for ln in lines[2:2+m]:
                 order, x, y, r = ln.split(' ')
                 anchors_.append(Point(float(x), float(y), float(r), int(order)))
 
             non_anchors_ = []
-            for ln in lines[2+n:2+n+m]:
+            for ln in lines[2+m:2+n+m]:
                 order, x, y, r = ln.split(' ')
                 non_anchors_.append(Point(float(x), float(y), float(r), int(order)))
 

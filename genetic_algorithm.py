@@ -1,6 +1,5 @@
-from wusn.commons import Gen, Individual, NonAnchor
+from wusn.commons import Individual, NonAnchor
 import os
-import math
 
 from simulated_ToA import ToA
 import common as cm
@@ -109,9 +108,6 @@ if __name__ == '__main__':
     # path_2 = input()
     print('Enter a path to an input/output file to data.')
     path_3 = input()
-    print(path_1)
-    print(path_2)
-    print(path_3)
 
     try:
 
