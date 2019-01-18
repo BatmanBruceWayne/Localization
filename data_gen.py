@@ -14,8 +14,8 @@ def parse_arguments():
     parser.add_argument('-c', '--count', type=int, default=5)
     parser.add_argument('-W', '--width', type=float, default=100.)
     parser.add_argument('-H', '--height', type=float, default=100.)
-    parser.add_argument('-N', '--anchors', type=int, default=20)
-    parser.add_argument('-M', '--non_anchors', type=int, default=80)
+    parser.add_argument('-N', '--anchors', type=int, default=10)
+    parser.add_argument('-M', '--non_anchors', type=int, default=90)
     # parser.add_argument('-Y', type=int, default=20)
     parser.add_argument('-radius', type=float, default=30.)
 
